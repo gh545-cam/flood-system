@@ -18,5 +18,6 @@ def run():
     print('closest:',c)
     print('furthest:',f)
 
+
 if __name__ == "__main__":
     run()
