@@ -5,5 +5,15 @@
 geographical data.
 
 """
+from haversine import haversine, Unit
+from .utils import sorted_by_key
 
-from .utils import sorted_by_key  # noqa
+def stations_by_distance(stations,p):
+    res = []
+    for s in stations:
+        c = s.coord
+        distance = haversine(c,p)
+        res.append((s,distance))
+    result = sorted_by_key(res,1)
+    return result
+
