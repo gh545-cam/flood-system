@@ -43,3 +43,25 @@ def stations_by_river(stations):
         else:
             dic[riv].append(s)
     return dic
+
+def rivers_by_station_number(stations, N):
+    dic = {}
+    for s in stations:
+        riv = s.river
+        if riv not in dic.keys():
+            dic[riv] = 1
+        else:
+            dic[riv] +=1
+    lst = []
+    for key in dic.keys():
+        lst.append((key,dic[key]))
+    lst = sorted_by_key(lst,1,True)
+    res = lst[:N]
+    for i in range(N,len(lst)):
+        last = res[-1][1] 
+        num = lst[i][1]
+        if last == num:
+            res.append(lst[i])
+        elif last < num:
+            break
+    return res
