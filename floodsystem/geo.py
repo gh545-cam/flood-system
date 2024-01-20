@@ -26,3 +26,20 @@ def stations_within_radius(stations, centre, r):
             res.append(s)
     return res
 
+def rivers_with_station(stations):
+    res = []
+    for s in stations:
+        riv = s.river
+        res.append(riv)
+    result = set(res)
+    return result
+
+def stations_by_river(stations):
+    dic = {}
+    for s in stations:
+        riv = s.river
+        if riv not in dic.keys():
+            dic[riv] = [s]
+        else:
+            dic[riv].append(s)
+    return dic
