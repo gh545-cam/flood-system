@@ -51,6 +51,7 @@ class MonitoringStation:
         
 
 def inconsistent_typical_range_stations(stations):
+    #returns list of stations of inconsistent typical range where data value = 0 or high range < low range
     res = []
     for s in stations:
         if s.typical_range_consistent == False:
