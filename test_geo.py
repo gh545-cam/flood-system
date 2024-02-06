@@ -91,22 +91,21 @@ def test_rivers_with_station():
 def test_stations_by_river():
     # Create mock data
     stations = [
-        MonitoringStation("id1", "measure1", "Station1", (0, 0), (0, 1), "River Thames", "Town1"),
-        MonitoringStation("id2", "measure2", "Station2", (1, 1), (1, 2), "River Cam", "Town2"),
-        MonitoringStation("id3", "measure3", "Station3", (2, 2), (2, 3), "River Thames", "Town3")
+        MonitoringStation("id1", "m1", "S1", (0, 0), (0, 1), "River Thames", "t1"),
+        MonitoringStation("id2", "m2", "S2", (1, 1), (1, 2), "River Cam", "t2"),
+        MonitoringStation("id3", "m3", "S3", (2, 2), (2, 3), "River Thames", "t3")
     ]
 
-    # Expected result
     expected_dict = {
-        "River Thames": ["Station1", "Station3"],
-        "River Cam": ["Station2"]
+        "River Thames": ["S1", "S3"],
+        "River Cam": ["S2"]
     }
 
-    # Call the function
+    # Function result
     river_dict = stations_by_river(stations)
 
-    # Assert the result
-    assert river_dict == expected_dict, "The function should return the correct mapping of rivers to station names."
+    # Compare  result
+    assert river_dict == expected_dict, "The function returns the correct results."
 
 def test_rivers_by_station_number():
     # Create mock data
