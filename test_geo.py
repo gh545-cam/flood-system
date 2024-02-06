@@ -110,20 +110,20 @@ def test_stations_by_river():
 def test_rivers_by_station_number():
     # Create mock data
     stations = [
-        MonitoringStation("id1", "measure1", "Station1", (0, 0), (0, 1), "River Thames", "Town1"),
-        MonitoringStation("id2", "measure2", "Station2", (1, 1), (1, 2), "River Cam", "Town2"),
-        MonitoringStation("id3", "measure3", "Station3", (2, 2), (2, 3), "River Thames", "Town3"),
-        MonitoringStation("id4", "measure4", "Station4", (2, 2), (2, 3), "River Thames", "Town4"),
-        MonitoringStation("id5", "measure5", "Station5", (3, 3), (3, 4), "River Avon", "Town5"),
-        MonitoringStation("id6", "measure6", "Station6", (4, 4), (4, 5), "River Avon", "Town6"),
-        MonitoringStation("id7", "measure7", "Station7", (3, 3), (3, 4), "River Blon", "Town7"),
-        MonitoringStation("id8", "measure8", "Station8", (4, 4), (4, 5), "River Blon", "Town8")
+        MonitoringStation("id1", "m1", "S1", (0, 0), (0, 1), "River Thames", "t1"),
+        MonitoringStation("id2", "m2", "S2", (1, 1), (1, 2), "River Cam", "t2"),
+        MonitoringStation("id3", "m3", "S3", (2, 2), (2, 3), "River Thames", "t3"),
+        MonitoringStation("id4", "m4", "S4", (2, 2), (2, 3), "River Thames", "t4"),
+        MonitoringStation("id5", "m5", "S5", (3, 3), (3, 4), "River Avon", "t5"),
+        MonitoringStation("id6", "m6", "S6", (4, 4), (4, 5), "River Avon", "t6"),
+        MonitoringStation("id7", "m7", "S7", (3, 3), (3, 4), "River Blon", "t7"),
+        MonitoringStation("id8", "m8", "S8", (4, 4), (4, 5), "River Blon", "t8")
     ]
 
-    # Call the function
+    # Function result
     result = rivers_by_station_number(stations, 2)
 
-    # Assert the result
+    # Compare result
     assert (result == [("River Thames", 3), ("River Avon", 2),("River Blon", 2)] or
         result == [("River Thames", 3), ("River Blon", 2),("River Avon", 2)]), \
-        "The function should return the correct list of top N rivers by station count."
+        "The function returns the correct list of top N rivers."
