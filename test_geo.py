@@ -14,7 +14,6 @@ def test_stations_by_distance():
                           river="r1",
                           town="t1"
                           )
-    
     # Create 1st station
     s2 = MonitoringStation(station_id="sta2",
                           measure_id="m2",
@@ -24,7 +23,6 @@ def test_stations_by_distance():
                           river="r2",
                           town="t2"
                           )
-
     stations = [s1,s2]
     #create list of station objects stations
     # define random coordinate p
@@ -36,31 +34,31 @@ def test_stations_by_distance():
 
 def test_stations_within_radius():
     # Create mock data
-    s1=MonitoringStation(station_id="test-s-id-1",
-                          measure_id="test-m-id-1",
+    s1=MonitoringStation(station_id="sta1",
+                          measure_id="m1",
                           label="Trumptington",
                           coord=((53.2053, 0.1418)),
                           typical_range=(-2.3, 3.4445),
-                          river="River X",
-                          town="My Town"
+                          river="r1",
+                          town="t1"
                           )
     
-    s2 = MonitoringStation(station_id="test-s-id-2",
-                          measure_id="test-m-id-2",
-                          label="London",
+    s2 = MonitoringStation(station_id="sta2",
+                          measure_id="m2",
+                          label="Cambridge",
                           coord=(51.5074, -0.1278),
                           typical_range=(-2.3, 3.4445),
-                          river="River X",
-                          town="My Town"
+                          river="r2",
+                          town="t2"
                           )
     
-    s3 = MonitoringStation(station_id="test-s-id-3",
-                          measure_id="test-m-id-3",
-                          label="Station 3",
+    s3 = MonitoringStation(station_id="sta3",
+                          measure_id="m3",
+                          label="York",
                           coord=(52.4862, -1.8904),
                           typical_range=(-2.3, 3.4445),
-                          river="River X",
-                          town="My Town"
+                          river="r3",
+                          town="t3"
                           )
 
     stations = [s1,s2,s3]
@@ -74,7 +72,7 @@ def test_stations_within_radius():
 
     # Check if the function returns only the stations within the radius
     assert len(nearby_stations) == 1
-    assert nearby_stations[0].name== "London"
+    assert nearby_stations[0].name== "Cambridge"
 
 def test_rivers_with_station():
     # Create mock data
