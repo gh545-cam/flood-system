@@ -15,13 +15,13 @@ def run():
     r3 = []
     for item in dic['River Aire']:
         #extracts list of station objects from dictionary, then extract name from station object to append to output list
-        r1.append(item.name)
+        r1.append(item)
     r1.sort()
     for item in dic['River Cam']:
-        r2.append(item.name)
+        r2.append(item)
     r2.sort()
     for item in dic['River Thames']:
-        r3.append(item.name)
+        r3.append(item)
     r3.sort()
     print(r1)
     print(r2)
