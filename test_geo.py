@@ -63,11 +63,9 @@ def test_stations_within_radius():
 
     stations = [s1,s2,s3]
 
-    # Define a center point and radius
+    # Create an aribitary center  and radius
     center = (52.2053, 0.1218) # Cambridge location
     radius = 90
-
-    # Call the function
     nearby_stations = stations_within_radius(stations, center, radius)
 
     # Check if the function returns only the stations within the radius
@@ -77,19 +75,18 @@ def test_stations_within_radius():
 def test_rivers_with_station():
     # Create mock data
     stations = [
-        MonitoringStation("id1", "measure1", "Station1", (0, 0), (0, 1), "River Thames", "Town1"),
-        MonitoringStation("id2", "measure2", "Station2", (1, 1), (1, 2), "River Cam", "Town2"),
-        MonitoringStation("id3", "measure3", "Station3", (2, 2), (2, 3), "River Thames", "Town3")
+        MonitoringStation("id1", "m1", "S1", (0, 0), (0, 1), "River Thames", "t1"),
+        MonitoringStation("id2", "m2", "S2", (1, 1), (1, 2), "River Cam", "t2"),
+        MonitoringStation("id3", "m3", "S3", (2, 2), (2, 3), "River Thames", "t3")
     ]
-
     # Expected result
     expected_rivers = {"River Thames", "River Cam"}
 
-    # Call the function
+    # Function result
     result = rivers_with_station(stations)
 
-    # Assert the result
-    assert result == expected_rivers, "The function should return the correct set of river names."
+    # Compare the result
+    assert result == expected_rivers, "the function returns the correct river names."
 
 def test_stations_by_river():
     # Create mock data
