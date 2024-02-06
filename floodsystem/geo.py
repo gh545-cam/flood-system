@@ -49,9 +49,9 @@ def stations_by_river(stations):
     for s in stations:
         riv = s.river
         if riv not in dic.keys():
-            dic[riv] = [s]
+            dic[riv] = [s.name]
         else:
-            dic[riv].append(s)
+            dic[riv].append(s.name)
     return dic
 
 def rivers_by_station_number(stations, N):
