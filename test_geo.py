@@ -26,13 +26,12 @@ def test_stations_by_distance():
                           )
 
     stations = [s1,s2]
-
-    # Create a coordinate p
+    #create list of station objects stations
+    # define random coordinate p
     p = (52.2053, 0.1218)
-
     result = stations_by_distance(stations, p)
-
     assert result == [(s1, 6038.3717730613525), (s2, 6589.027461288413)]
+    #test that distance is correct + ordered in ascending order
 
 
 def test_stations_within_radius():
