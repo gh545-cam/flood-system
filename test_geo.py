@@ -6,24 +6,23 @@ from floodsystem.station import MonitoringStation
 
 def test_stations_by_distance():
 
-    # Create 1st station
-    s1 = MonitoringStation(station_id="test-s-id-1",
-                          measure_id="test-m-id-1",
-                          label="Station 1",
+    # Create station 1
+    s1 = MonitoringStation(station_id="sta1", measure_id="m1",
+                          label="Station1",
                           coord=(-2.0, 4.0),
                           typical_range=(-2.3, 3.4445),
-                          river="River X",
-                          town="My Town"
+                          river="r1",
+                          town="t1"
                           )
     
-        # Create 1st station
-    s2 = MonitoringStation(station_id="test-s-id-2",
-                          measure_id="test-m-id-2",
-                          label="Station 2",
+    # Create 1st station
+    s2 = MonitoringStation(station_id="sta2",
+                          measure_id="m2",
+                          label="Station2",
                           coord=(-7.0, 3.0),
                           typical_range=(-2.3, 3.4445),
-                          river="River X",
-                          town="My Town"
+                          river="r2",
+                          town="t2"
                           )
 
     stations = [s1,s2]
