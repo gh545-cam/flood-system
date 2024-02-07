@@ -6,10 +6,8 @@ def run():
     #print list of stations with inconsistent ranges usingg inconsistent_typical_range_station function
     stations = build_station_list()
     res = inconsistent_typical_range_stations(stations)
-    lst = []
-    for item in res:
-        lst.append(item.name)
-    print(lst)
+    res.sort()
+    print(res)
 
 
 if __name__ == "__main__":

@@ -42,18 +42,22 @@ class MonitoringStation:
 
         
     def typical_range_consistent(self):
-        if self.typical_range == None:
-            return False
-        elif self.typical_range[1] < self.typical_range[0]:
-            return False
-        else:
+        try:
+            if self.typical_range == None:
+                return False
+            elif self.typical_range[1] < self.typical_range[0]:
+                return False
             return True
+        except:
+            return False
         
 
 def inconsistent_typical_range_stations(stations):
     #returns list of stations of inconsistent typical range where data value = 0 or high range < low range
     res = []
     for s in stations:
-        if s.typical_range_consistent == False:
-            res.append(s)
+        #print("Testing:", s.name) Used for tracking code
+        if s.typical_range_consistent() == False:
+            #print("Inconsistent data)") Used for tracking code
+            res.append(s.name)
     return res
