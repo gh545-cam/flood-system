@@ -6,8 +6,9 @@ def run():
     lst = stations_within_radius(stations,(52.2053, 0.1218),10)
     res = []
     for item in lst:
-        res.append(item)
+        res.append(item.name)
         #extract and append station name to result list from station object
+    res.sort()
     print(res)
 
 if __name__ == "__main__":

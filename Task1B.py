@@ -7,7 +7,7 @@ def run():
     stations = build_station_list()
     res = stations_by_distance(stations,(52.2053, 0.1218))
     closest = res[:10] #list of 10 station objects closest to input coordinates
-    furthest = res[-11:] #list of 10 station objects furthest away from input coordinates
+    furthest = res[-10:] #list of 10 station objects furthest away from input coordinates
     c = []
     f = []
     for lst in closest:
