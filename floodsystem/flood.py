@@ -17,8 +17,10 @@ def stations_level_over_threshold(stations,tol):
 def stations_highest_rel_level(stations,N):
     res = stations_level_over_threshold(stations,0)
     lst = []
-    for i in range(0,N):
-        lst.append(res[len(res)-i-1])
+    i = len(lst)
+    while len(lst) < N:
+        s = res[len(res) - 1 - len(lst)][0]
+        lst.append((s,res[len(res)-1-len(lst)][1]))
     return lst
 
         
