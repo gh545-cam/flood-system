@@ -34,7 +34,7 @@ def run():
     # Split stations based on threshold (0.8 and 0.5)
         if station.typical_range_consistent() == True:
             level = station.relative_water_level()
-
+            continue
     #conduct gradient analysis
         dt = 2
         dates,levels = fetch_measure_levels(station.measure_id,dt = datetime.timedelta(days=dt))
@@ -42,10 +42,13 @@ def run():
             d = matplotlib.dates.date2num(dates)
             grad = (levels[0]-levels[-1])/(d[0]-d[-1])
             town = station.town
+            if station.town == None:
+                continue
             if level >= 0.8:
                 if town not in dic['Severe']:
                     dic['Severe'].append(town)
             elif level >= 0.5 and level < 0.8 and grad > 0:
+                if town not in dic['High']:
                     dic['High'].append(town)
             elif level < 0.8 and level >= 0.5 and grad < 0:
                 if town not in dic['Moderate']:
