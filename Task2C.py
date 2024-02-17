@@ -14,7 +14,8 @@ def run():
     # for station in [s for s in stations if s.name in names]:
     #     print("Station name and current level: {}, {}".format(station.name,
     #                                                           station.latest_level))
-    print(lst)
+    for (station,level) in lst:
+        print((station.name,level))
 
 if __name__ == "__main__":
     print("*** Task 2A: CUED Part IA Flood Warning System ***")

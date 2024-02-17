@@ -10,7 +10,7 @@ def stations_level_over_threshold(stations,tol):
         if bol == True:
             level = station.relative_water_level()
             if level != None and level > tol:
-                res.append((station.name,level))
+                res.append((station,level))
     result = sorted_by_key(res,1)
     return result
 
