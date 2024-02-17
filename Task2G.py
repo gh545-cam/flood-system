@@ -34,7 +34,7 @@ def run():
     # Split stations based on threshold (0.8 and 0.5)
         if station.typical_range_consistent() == True:
             level = station.relative_water_level()
-            
+
     #conduct gradient analysis
         dt = 2
         dates,levels = fetch_measure_levels(station.measure_id,dt = datetime.timedelta(days=dt))
@@ -53,8 +53,7 @@ def run():
             else:
                 if town not in dic['Low']:
                     dic['Low'].append(town)
-        print('*')
-    print(dic)
+        print(dic)
 
 
 
