@@ -44,8 +44,6 @@ def run():
             poly = np.poly1d(p_coeff)
             fderiv = poly.deriv()
             grad = fderiv(date_float-date_float[0])[-1]
-            print(grad)
-
             town = station.town
             if station.town == None:
                 continue
@@ -62,12 +60,6 @@ def run():
                 if town not in dic['Low']:
                     dic['Low'].append(town)
         print(dic)
-
-
-
-        
-    
-    
 
 if __name__ == "__main__":
     print("*** Task 2D: CUED Part IA Flood Warning System ***")
