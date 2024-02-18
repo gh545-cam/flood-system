@@ -6,14 +6,9 @@ def run():
 
     # Update latest level data for all stations
     update_water_levels(stations)
-
-    # Print station and latest level for first 5 stations in list
+    #retrieve stations with water level over 0.8 tolerance
     lst = stations_level_over_threshold(stations,0.8)
-
-    # Alternative implementation
-    # for station in [s for s in stations if s.name in names]:
-    #     print("Station name and current level: {}, {}".format(station.name,
-    #                                                           station.latest_level))
+    #print station name and relative water level
     for (station,level) in lst:
         print(station.name,level)
 

@@ -31,22 +31,29 @@ def run():
     update_water_levels(stations)
 
     for station in stations:
-    # Split stations based on threshold (0.8 and 0.5)
+        #check that station has consistent typical range
         if station.typical_range_consistent() == True:
             level = station.relative_water_level()
+            #obtain relative water level
             continue
     #conduct gradient analysis
         dt = 2
         dates,levels = fetch_measure_levels(station.measure_id,dt = datetime.timedelta(days=dt))
         if dates != [] and levels != []:
+            #check dates and levels are not empty
             date_float = matplotlib.dates.date2num(dates)
             p_coeff = np.polyfit(date_float-date_float[0], levels, 4)
             poly = np.poly1d(p_coeff)
+            #obtain polynomial fit
             fderiv = poly.deriv()
+            #find derivative
             grad = fderiv(date_float-date_float[0])[-1]
+            #latest gradient = last item of derivative list
             town = station.town
+            #get station town name
             if station.town == None:
                 continue
+            #sort towns into categories based on aforementioned restrictions
             if level >= 0.8:
                 if town not in dic['Severe']:
                     dic['Severe'].append(town)

@@ -15,9 +15,10 @@ def run():
     stations = build_station_list()
     update_water_levels(stations)
 
-    # Print station and latest level for first 5 stations in list
+    # Obtain station and latest level for first 5 stations with highest rel. water level
     lst = stations_highest_rel_level(stations,5)
 
+    #for each station in lst, fetch water level against time data and plot on interval of 10 days
     for tup in lst:
         station = tup[0]
         dt = 10

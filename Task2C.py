@@ -7,13 +7,9 @@ def run():
     # Update latest level data for all stations
     update_water_levels(stations)
 
-    # Print station and latest level for first 5 stations in list
+    #retrieves top 10 stations with highest relative water level
     lst = stations_highest_rel_level(stations,10)
-
-    # Alternative implementation
-    # for station in [s for s in stations if s.name in names]:
-    #     print("Station name and current level: {}, {}".format(station.name,
-    #                                                           station.latest_level))
+    #prints stations name and rel. water level in tuple form
     for (station,level) in lst:
         print((station.name,level))
 
