@@ -22,7 +22,7 @@ from floodsystem.flood import stations_level_over_threshold
 from floodsystem.utils import sorted_by_key
 from floodsystem.analysis import polyfit
 from floodsystem.datafetcher import fetch_measure_levels
-
+import numpy as np
 
 def run():
     dic = {"Severe":[],'High':[],'Moderate':[],'Low':[]}
@@ -39,8 +39,13 @@ def run():
         dt = 2
         dates,levels = fetch_measure_levels(station.measure_id,dt = datetime.timedelta(days=dt))
         if dates != [] and levels != []:
-            d = matplotlib.dates.date2num(dates)
-            grad = (levels[0]-levels[-1])/(d[0]-d[-1])
+            date_float = matplotlib.dates.date2num(dates)
+            p_coeff = np.polyfit(date_float-date_float[0], levels, 4)
+            poly = np.poly1d(p_coeff)
+            fderiv = poly.deriv()
+            grad = fderiv(date_float-date_float[0])[-1]
+            print(grad)
+
             town = station.town
             if station.town == None:
                 continue
