@@ -21,11 +21,6 @@ def stations_level_over_threshold(stations,tol):
 def stations_highest_rel_level(stations,N):
     #returns top N stations with highest water level in descending order
     res = stations_level_over_threshold(stations,0)
-    lst = []
-    i = len(lst)
-    while len(lst) < N:
-        s = res[len(res) - 1 - len(lst)][0]
-        lst.append((s,res[len(res)-1-len(lst)][1]))
-    return lst
+    return res[0:N]
 
         
