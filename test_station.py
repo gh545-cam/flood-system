@@ -4,7 +4,9 @@
 """Unit test for the station module"""
 
 from floodsystem.station import MonitoringStation
-from floodsystem.station import inconsistent_typical_range_stations
+from floodsystem.station import *
+from floodsystem.stationdata import update_water_levels
+import pytest as py
 
 
 def test_create_monitoring_station():
@@ -87,4 +89,19 @@ def test_inconsistent_typical_range_stations():
     #print(inconsistent_station_list)
     assert inconsistent_station_list == ["Place 8", "Place 9"]
 
-test_inconsistent_typical_range_stations()
+def test_relative_water_level():
+    # Create Test Data
+    s1 = MonitoringStation("Station 1", "Measurement 1", "Place 1", (0, 1), (0, 5), "River 1", "Town 1") # Consistent levels, water level of 1.5 -> relative water level of 0.3
+    s2 = MonitoringStation("Station 2", "Measurement 2", "Place 2", (0, 2), (2, 1), "River 2", "Town 2") # Inconsistent levels
+    s3 = MonitoringStation("Station 3", "Measurement 3", "Place 3", (0, 3), (3, 6), "River 3", "Town 3") # Consistent, level of 1.5 -> relative water level of -0.5
+    s4 = MonitoringStation("Station 4", "Measurement 4", "Place 4", (0, 4), (5, 10), "River 4", "Town 4") #Consistent, level of 15 -> relative water level of 2.
+    s1.latest_level = 1.5
+    s2.latest_level = 3
+    s3.latest_level = 1.5
+    s4.latest_level = 15
+    assert s1.relative_water_level() == py.approx(0.3)
+    s1.latest_level = None # s1 should now return None
+    assert s1.relative_water_level() == None
+    assert s2.relative_water_level() == None
+    assert s3.relative_water_level() == py.approx(-0.5)
+    assert s4.relative_water_level() == py.approx(2)
