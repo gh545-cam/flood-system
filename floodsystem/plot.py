@@ -12,16 +12,20 @@ def plot_water_levels(station,dates,levels):
     plt.ylabel('water level (m)')
     plt.xticks(rotation=45)
     plt.title(station.name)
+    plt.axhline(y = station.typical_range[0])
+    plt.axhline(y = station.typical_range[1])
     plt.tight_layout()
     plt.show()
 
 def plot_water_level_with_fit(station, dates, levels, p):
     #plots actual and polynomial fitted water level against time for particular station
-    plt.plot(matplotlib.dates.date2num(dates),levels)
+    plt.plot(dates,levels)
     plt.xlabel('date')
     plt.ylabel('water level (m)')
     plt.xticks(rotation=45)
     plt.title(station.name)
+    plt.axhline(y = station.typical_range[0])
+    plt.axhline(y = station.typical_range[1])
     plt.tight_layout()
     poly, d0 = polyfit(dates, levels, p)
     #create polynomial fit and plot
