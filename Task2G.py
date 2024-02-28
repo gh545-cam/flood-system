@@ -69,5 +69,5 @@ def run():
         print(dic)
 
 if __name__ == "__main__":
-    print("*** Task 2D: CUED Part IA Flood Warning System ***")
+    print("*** Task 2G: CUED Part IA Flood Warning System ***")
     run()
